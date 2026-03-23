@@ -1,6 +1,3 @@
--- =========================
--- SUPPRESSION DES TABLES
--- =========================
 DROP TABLE effectue CASCADE CONSTRAINTS;
 DROP TABLE participe CASCADE CONSTRAINTS;
 DROP TABLE historique_entretien CASCADE CONSTRAINTS;
