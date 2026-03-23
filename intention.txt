@@ -1,0 +1,232 @@
+CREATE TABLE Organisme(
+   SIRET NUMBER(10),
+   raison_sociale VARCHAR2(50),
+   PRIMARY KEY(SIRET)
+);
+
+CREATE TABLE territoire(
+   IdT NUMBER(10),
+   nom_territoire VARCHAR2(50),
+   PRIMARY KEY(IdT)
+);
+
+CREATE TABLE Repas(
+   IdR NUMBER(10),
+   nom_repas VARCHAR2(50) NOT NULL,
+   date_repas DATE NOT NULL,
+   adr_repas VARCHAR2(50),
+   nom_chevalier_dame VARCHAR2(50) NOT NULL,
+   PRIMARY KEY(IdR)
+);
+
+CREATE TABLE grade(
+   IdGr NUMBER(10),
+   PRIMARY KEY(IdGr)
+);
+
+CREATE TABLE titre(
+   IdTi NUMBER(10),
+   PRIMARY KEY(IdTi)
+);
+
+CREATE TABLE dignite(
+   IdD NUMBER(10),
+   PRIMARY KEY(IdD)
+);
+
+CREATE TABLE rang(
+   IdRa NUMBER(10),
+   PRIMARY KEY(IdRa)
+);
+
+CREATE TABLE composant(
+   IdC NUMBER(10),
+   type_aliment VARCHAR2(50),
+   nom VARCHAR2(50),
+   allergene VARCHAR2(50),
+   PRIMARY KEY(IdC)
+);
+
+CREATE TABLE sauce(
+   IdC NUMBER(10),
+   PRIMARY KEY(IdC),
+   FOREIGN KEY(IdC) REFERENCES composant(IdC)
+);
+
+CREATE TABLE ingredient(
+   IdC NUMBER(10),
+   PRIMARY KEY(IdC),
+   FOREIGN KEY(IdC) REFERENCES composant(IdC)
+);
+
+CREATE TABLE legume(
+   IdL NUMBER(10),
+   verifie NUMBER(1),
+   nom VARCHAR2(50),
+   PRIMARY KEY(IdL)
+);
+
+CREATE TABLE machine(
+   IdM NUMBER(10),
+   nom VARCHAR2(50),
+   PRIMARY KEY(IdM)
+);
+
+CREATE TABLE modele(
+   IdMo NUMBER(10),
+   nom_modele VARCHAR2(50),
+   PRIMARY KEY(IdMo)
+);
+
+CREATE TABLE membre(
+   CodeMembre VARCHAR2(50),
+   nom_membre VARCHAR2(100) NOT NULL,
+   adresse VARCHAR2(50) NOT NULL,
+   courriel VARCHAR2(50) NOT NULL,
+   num_tel VARCHAR2(50) NOT NULL,
+   IdD NUMBER(10),
+   IdTi NUMBER(10),
+   IdRa NUMBER(10),
+   IdGr NUMBER(10) NOT NULL,
+   PRIMARY KEY(CodeMembre),
+   FOREIGN KEY(IdD) REFERENCES dignite(IdD),
+   FOREIGN KEY(IdTi) REFERENCES titre(IdTi),
+   FOREIGN KEY(IdRa) REFERENCES rang(IdRa),
+   FOREIGN KEY(IdGr) REFERENCES grade(IdGr)
+);
+
+CREATE TABLE organisation(
+   IdO NUMBER(10),
+   nom_orga VARCHAR2(50) NOT NULL,
+   type_orga VARCHAR2(50) NOT NULL,
+   IdT NUMBER(10) NOT NULL,
+   PRIMARY KEY(IdO),
+   FOREIGN KEY(IdT) REFERENCES territoire(IdT)
+);
+
+CREATE TABLE groupe(
+   IdG NUMBER(10),
+   IdR NUMBER(10) NOT NULL,
+   PRIMARY KEY(IdG),
+   FOREIGN KEY(IdR) REFERENCES Repas(IdR)
+);
+
+CREATE TABLE plat(
+   IdP NUMBER(10),
+   IdL NUMBER(10),
+   PRIMARY KEY(IdP),
+   FOREIGN KEY(IdL) REFERENCES legume(IdL)
+);
+
+CREATE TABLE entretien(
+   IdE NUMBER(10),
+   certificat_entretien TIMESTAMP,
+   CodeMembre VARCHAR2(50) NOT NULL,
+   PRIMARY KEY(IdE),
+   FOREIGN KEY(CodeMembre) REFERENCES membre(CodeMembre)
+);
+
+CREATE TABLE ordre(
+   IdO NUMBER(10),
+   PRIMARY KEY(IdO),
+   FOREIGN KEY(IdO) REFERENCES organisation(IdO)
+);
+
+CREATE TABLE club(
+   IdO_1 NUMBER(10),
+   IdO NUMBER(10) NOT NULL,
+   PRIMARY KEY(IdO_1),
+   FOREIGN KEY(IdO_1) REFERENCES organisation(IdO),
+   FOREIGN KEY(IdO) REFERENCES ordre(IdO)
+);
+
+CREATE TABLE est_affilie(
+   CodeMembre VARCHAR2(50),
+   SIRET NUMBER(10),
+   PRIMARY KEY(CodeMembre, SIRET),
+   FOREIGN KEY(CodeMembre) REFERENCES membre(CodeMembre),
+   FOREIGN KEY(SIRET) REFERENCES Organisme(SIRET)
+);
+
+CREATE TABLE adhere(
+   CodeMembre VARCHAR2(50),
+   IdO NUMBER(10),
+   PRIMARY KEY(CodeMembre, IdO),
+   FOREIGN KEY(CodeMembre) REFERENCES membre(CodeMembre),
+   FOREIGN KEY(IdO) REFERENCES organisation(IdO)
+);
+
+CREATE TABLE appartient(
+   CodeMembre VARCHAR2(50),
+   IdG NUMBER(10),
+   PRIMARY KEY(CodeMembre, IdG),
+   FOREIGN KEY(CodeMembre) REFERENCES membre(CodeMembre),
+   FOREIGN KEY(IdG) REFERENCES groupe(IdG)
+);
+
+CREATE TABLE contient(
+   IdR NUMBER(10),
+   IdP NUMBER(10),
+   PRIMARY KEY(IdR, IdP),
+   FOREIGN KEY(IdR) REFERENCES Repas(IdR),
+   FOREIGN KEY(IdP) REFERENCES plat(IdP)
+);
+
+CREATE TABLE est_organise(
+   CodeMembre VARCHAR2(50),
+   IdR NUMBER(10),
+   PRIMARY KEY(CodeMembre, IdR),
+   FOREIGN KEY(CodeMembre) REFERENCES membre(CodeMembre),
+   FOREIGN KEY(IdR) REFERENCES Repas(IdR)
+);
+
+CREATE TABLE est_compose(
+   IdP NUMBER(10),
+   IdC NUMBER(10),
+   PRIMARY KEY(IdP, IdC),
+   FOREIGN KEY(IdP) REFERENCES plat(IdP),
+   FOREIGN KEY(IdC) REFERENCES composant(IdC)
+);
+
+CREATE TABLE comporte(
+   IdC NUMBER(10),
+   IdC_1 NUMBER(10),
+   PRIMARY KEY(IdC, IdC_1),
+   FOREIGN KEY(IdC) REFERENCES sauce(IdC),
+   FOREIGN KEY(IdC_1) REFERENCES ingredient(IdC)
+);
+
+CREATE TABLE est(
+   IdM NUMBER(10),
+   IdMo NUMBER(10),
+   PRIMARY KEY(IdM, IdMo),
+   FOREIGN KEY(IdM) REFERENCES machine(IdM),
+   FOREIGN KEY(IdMo) REFERENCES modele(IdMo)
+);
+
+CREATE TABLE historique_entretien(
+   IdO NUMBER(10),
+   IdM NUMBER(10),
+   IdE NUMBER(10),
+   date_entretien DATE NOT NULL,
+   PRIMARY KEY(IdO, IdM, IdE),
+   FOREIGN KEY(IdO) REFERENCES organisation(IdO),
+   FOREIGN KEY(IdM) REFERENCES machine(IdM),
+   FOREIGN KEY(IdE) REFERENCES entretien(IdE)
+);
+
+CREATE TABLE participe(
+   IdR NUMBER(10),
+   IdM NUMBER(10),
+   PRIMARY KEY(IdR, IdM),
+   FOREIGN KEY(IdR) REFERENCES Repas(IdR),
+   FOREIGN KEY(IdM) REFERENCES machine(IdM)
+);
+
+CREATE TABLE effectue(
+   IdM NUMBER(10),
+   IdE NUMBER(10),
+   PRIMARY KEY(IdM, IdE),
+   FOREIGN KEY(IdM) REFERENCES machine(IdM),
+   FOREIGN KEY(IdE) REFERENCES entretien(IdE)
+);
