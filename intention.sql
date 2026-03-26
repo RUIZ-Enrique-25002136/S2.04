@@ -14,7 +14,7 @@ CREATE TABLE Repas(
    IdR NUMBER(10),
    nom_repas VARCHAR2(50)  NOT NULL,
    Date_ DATE NOT NULL,
-   adr_repas VARCHAR2(60) ,
+   adr_repas VARCHAR2(70) ,
    Nom_Chevalier_Dame VARCHAR2(50)  NOT NULL,
    PRIMARY KEY(IdR)
 );
@@ -51,21 +51,6 @@ CREATE TABLE composant(
    PRIMARY KEY(IdC)
 );
 
-CREATE TABLE Sauce(
-   IdS VARCHAR2(50) ,
-   IdC NUMBER(10) NOT NULL,
-   PRIMARY KEY(IdS),
-   UNIQUE(IdC),
-   FOREIGN KEY(IdC) REFERENCES composant(IdC)
-);
-
-CREATE TABLE Ingrédient(
-   IdI VARCHAR2(50) ,
-   IdC NUMBER(10) NOT NULL,
-   PRIMARY KEY(IdI),
-   UNIQUE(IdC),
-   FOREIGN KEY(IdC) REFERENCES composant(IdC)
-);
 
 CREATE TABLE Légume(
    IdL NUMBER(10),
@@ -130,6 +115,7 @@ CREATE TABLE organisation(
 CREATE TABLE plat(
    IdP NUMBER(10),
    IdL NUMBER(10),
+   Nom_Plat VARCHAR2(20),
    PRIMARY KEY(IdP),
    FOREIGN KEY(IdL) REFERENCES Légume(IdL)
 );
@@ -205,13 +191,7 @@ CREATE TABLE est_composé(
    FOREIGN KEY(IdC) REFERENCES composant(IdC)
 );
 
-CREATE TABLE Comporte(
-   IdS VARCHAR2(50) ,
-   IdI VARCHAR2(50) ,
-   PRIMARY KEY(IdS, IdI),
-   FOREIGN KEY(IdS) REFERENCES Sauce(IdS),
-   FOREIGN KEY(IdI) REFERENCES Ingrédient(IdI)
-);
+
 
 CREATE TABLE Est(
    IdM NUMBER(10),
