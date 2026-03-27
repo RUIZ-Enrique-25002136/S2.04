@@ -71,10 +71,6 @@ CREATE TABLE modèle(
    PRIMARY KEY(IdMo)
 );
 
-CREATE TABLE date_(
-   date_ VARCHAR2(50) ,
-   PRIMARY KEY(date_)
-);
 CREATE TABLE Groupe(
    IdG NUMBER(10),
    IdR NUMBER(10) NOT NULL,
@@ -145,7 +141,7 @@ CREATE TABLE Club(
 
 CREATE TABLE est_affilié(
    CodeMembre VARCHAR2(50),
-   SIRET VARCHAR2(20),  -- 👈 C'EST CETTE LIGNE QU'IL FAUT CORRIGER
+   SIRET VARCHAR2(20),  
    PRIMARY KEY(CodeMembre, SIRET),
    FOREIGN KEY(CodeMembre) REFERENCES Membre(CodeMembre),
    FOREIGN KEY(SIRET) REFERENCES Organisme(SIRET)
@@ -209,8 +205,7 @@ CREATE TABLE Historique_entretien(
    PRIMARY KEY(IdO, IdM, IdE, date_),
    FOREIGN KEY(IdO) REFERENCES organisation(IdO),
    FOREIGN KEY(IdM) REFERENCES machine(IdM),
-   FOREIGN KEY(IdE) REFERENCES Entretien(IdE),
-   FOREIGN KEY(date_) REFERENCES date_(date_)
+   FOREIGN KEY(IdE) REFERENCES Entretien(IdE)
 );
 
 CREATE TABLE Participe(

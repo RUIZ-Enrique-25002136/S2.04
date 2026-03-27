@@ -1,199 +1,199 @@
-0,14
-1,2
-2,3
-3,16
-4,11
-5,6
-6,3
-7,""
-8,""
-9,""
-10,""
-11,""
-12,""
-13,""
-14,""
-15,""
-16,""
-17,""
-18,""
-19,13
-20,""
-21,6
-22,""
-23,18
-24,""
-25,""
-26,15
-27,""
-28,5
-29,""
-30,6
-31,""
-32,14
-33,8
-34,""
-35,""
-36,""
-37,18
-38,1
-39,""
-40,17
-41,7
-42,16
-43,""
-44,8
-45,""
-46,""
-47,19
-48,""
-49,9
-50,17
-51,""
-52,""
-53,11
-54,4
-55,""
-56,""
-57,16
-58,""
-59,5
-60,""
-61,""
-62,""
-63,""
-64,5
-65,8
-66,18
-67,""
-68,5
-69,7
-70,19
-71,""
-72,17
-73,3
-74,""
-75,2
-76,1
-77,15
-78,18
-79,11
-80,""
-81,""
-82,19
-83,""
-84,""
-85,4
-86,19
-87,""
-88,1
-89,10
-90,14
-91,5
-92,""
-93,17
-94,""
-95,""
-96,16
-97,1
-98,""
-99,1
-100,8
-101,""
-102,15
-103,9
-104,""
-105,""
-106,1
-107,8
-108,10
-109,""
-110,""
-111,17
-112,17
-113,""
-114,""
-115,5
-116,""
-117,7
-118,17
-119,4
-120,11
-121,4
-122,4
-123,""
-124,""
-125,16
-126,""
-127,10
-128,13
-129,""
-130,""
-131,""
-132,15
-133,2
-134,13
-135,""
-136,""
-137,""
-138,""
-139,""
-140,""
-141,10
-142,4
-143,""
-144,5
-145,9
-146,""
-147,""
-148,4
-149,""
-150,""
-151,2
-152,""
-153,9
-154,7
-155,""
-156,""
-157,""
-158,9
-159,""
-160,""
-161,""
-162,""
-163,""
-164,1
-165,8
-166,""
-167,10
-168,13
-169,""
-170,8
-171,11
-172,""
-173,""
-174,""
-175,2
-176,""
-177,""
-178,""
-179,""
-180,""
-181,4
-182,7
-183,""
-184,19
-185,""
-186,5
-187,""
-188,16
-189,1
-190,""
-191,""
-192,""
-193,""
-194,""
-195,12
-196,19
-197,8
-198,6
+1,"","Riz sauté soja"
+2,"","Dahl de lentilles"
+3,"","Omelette herbes"
+4,"","Omelette herbes"
+5,3,"Bœuf aux carottes"
+6,"","Bœuf aux carottes"
+7,"","Poulet cacahuète"
+8,10,"Crevettes sautées"
+9,"","Cabillaud poché"
+10,"","Omelette herbes"
+11,"","Omelette herbes"
+12,8,"Crevettes sautées"
+13,16,"Poulet cacahuète"
+14,"","Dahl de lentilles"
+15,8,"Crevettes sautées"
+16,15,"Pâtes au fromage"
+17,"","Saumon rôti"
+18,"","Poulet cacahuète"
+19,"","Omelette herbes"
+20,16,"Pâtes au fromage"
+21,"","Bœuf au poivre"
+22,"","Poulet cacahuète"
+23,"","Cabillaud poché"
+24,19,"Dahl de lentilles"
+25,3,"Dahl de lentilles"
+26,13,"Riz sauté soja"
+27,8,"Poulet au curry"
+28,14,"Dahl de lentilles"
+29,"","Bœuf aux carottes"
+30,"","Poulet au curry"
+31,4,"Dahl de lentilles"
+32,11,"Dahl de lentilles"
+33,10,"Bœuf aux carottes"
+34,"","Pâtes au fromage"
+35,9,"Saumon rôti"
+36,11,"Pâtes au fromage"
+37,19,"Poulet au curry"
+38,"","Saumon rôti"
+39,18,"Bœuf aux carottes"
+40,"","Crevettes sautées"
+41,"","Poulet au curry"
+42,8,"Riz sauté soja"
+43,"","Bœuf aux carottes"
+44,"","Cabillaud poché"
+45,15,"Crevettes sautées"
+46,"","Bœuf au poivre"
+47,11,"Poulet au curry"
+48,"","Pâtes au saumon"
+49,17,"Saumon rôti"
+50,17,"Dahl de lentilles"
+51,15,"Pâtes au saumon"
+52,"","Riz sauté soja"
+53,"","Bœuf aux carottes"
+54,7,"Omelette herbes"
+55,3,"Crevettes sautées"
+56,"","Pâtes au saumon"
+57,19,"Poulet au curry"
+58,19,"Crevettes sautées"
+59,"","Crevettes sautées"
+60,"","Bœuf aux carottes"
+61,11,"Crevettes sautées"
+62,18,"Cabillaud poché"
+63,8,"Bœuf aux carottes"
+64,"","Pâtes au saumon"
+65,19,"Omelette herbes"
+66,"","Poulet au curry"
+67,4,"Cabillaud poché"
+68,"","Pâtes au saumon"
+69,16,"Cabillaud poché"
+70,6,"Pâtes au saumon"
+71,"","Crevettes sautées"
+72,9,"Bœuf au poivre"
+73,"","Pâtes au fromage"
+74,"","Pâtes au saumon"
+75,"","Riz sauté soja"
+76,"","Saumon rôti"
+77,"","Bœuf aux carottes"
+78,4,"Pâtes au saumon"
+79,8,"Saumon rôti"
+80,"","Dahl de lentilles"
+81,13,"Omelette herbes"
+82,5,"Saumon rôti"
+83,7,"Omelette herbes"
+84,"","Riz sauté soja"
+85,15,"Crevettes sautées"
+86,15,"Cabillaud poché"
+87,"","Saumon rôti"
+88,"","Bœuf aux carottes"
+89,5,"Poulet au curry"
+90,4,"Omelette herbes"
+91,"","Saumon rôti"
+92,"","Poulet au curry"
+93,"","Bœuf aux carottes"
+94,6,"Cabillaud poché"
+95,"","Omelette herbes"
+96,"","Bœuf au poivre"
+97,"","Omelette herbes"
+98,15,"Crevettes sautées"
+99,17,"Omelette herbes"
+100,4,"Poulet au curry"
+101,"","Dahl de lentilles"
+102,18,"Dahl de lentilles"
+103,6,"Omelette herbes"
+104,19,"Poulet au curry"
+105,16,"Omelette herbes"
+106,7,"Poulet cacahuète"
+107,"","Bœuf aux carottes"
+108,"","Pâtes au fromage"
+109,"","Poulet cacahuète"
+110,16,"Saumon rôti"
+111,12,"Riz sauté soja"
+112,"","Cabillaud poché"
+113,5,"Riz sauté soja"
+114,1,"Pâtes au fromage"
+115,"","Omelette herbes"
+116,"","Pâtes au saumon"
+117,"","Crevettes sautées"
+118,"","Dahl de lentilles"
+119,"","Cabillaud poché"
+120,"","Riz sauté soja"
+121,17,"Poulet cacahuète"
+122,"","Pâtes au fromage"
+123,13,"Pâtes au fromage"
+124,"","Cabillaud poché"
+125,4,"Pâtes au saumon"
+126,"","Saumon rôti"
+127,3,"Saumon rôti"
+128,14,"Pâtes au saumon"
+129,11,"Dahl de lentilles"
+130,"","Poulet cacahuète"
+131,"","Omelette herbes"
+132,13,"Dahl de lentilles"
+133,5,"Poulet au curry"
+134,15,"Pâtes au saumon"
+135,"","Crevettes sautées"
+136,2,"Crevettes sautées"
+137,12,"Pâtes au fromage"
+138,3,"Pâtes au fromage"
+139,"","Pâtes au fromage"
+140,"","Poulet au curry"
+141,7,"Poulet cacahuète"
+142,"","Dahl de lentilles"
+143,13,"Poulet cacahuète"
+144,1,"Crevettes sautées"
+145,"","Bœuf au poivre"
+146,17,"Crevettes sautées"
+147,"","Crevettes sautées"
+148,7,"Pâtes au saumon"
+149,"","Bœuf au poivre"
+150,9,"Dahl de lentilles"
+151,"","Cabillaud poché"
+152,16,"Poulet cacahuète"
+153,"","Cabillaud poché"
+154,"","Riz sauté soja"
+155,"","Bœuf au poivre"
+156,"","Dahl de lentilles"
+157,4,"Omelette herbes"
+158,"","Poulet cacahuète"
+159,18,"Poulet cacahuète"
+160,"","Pâtes au fromage"
+161,13,"Saumon rôti"
+162,17,"Pâtes au fromage"
+163,"","Cabillaud poché"
+164,"","Poulet cacahuète"
+165,"","Bœuf au poivre"
+166,4,"Omelette herbes"
+167,"","Poulet cacahuète"
+168,5,"Pâtes au fromage"
+169,"","Riz sauté soja"
+170,14,"Saumon rôti"
+171,15,"Cabillaud poché"
+172,10,"Crevettes sautées"
+173,"","Bœuf au poivre"
+174,"","Pâtes au fromage"
+175,3,"Poulet au curry"
+176,"","Saumon rôti"
+177,14,"Crevettes sautées"
+178,"","Omelette herbes"
+179,"","Omelette herbes"
+180,"","Crevettes sautées"
+181,"","Crevettes sautées"
+182,17,"Omelette herbes"
+183,10,"Bœuf au poivre"
+184,6,"Bœuf aux carottes"
+185,16,"Dahl de lentilles"
+186,"","Omelette herbes"
+187,"","Saumon rôti"
+188,"","Pâtes au saumon"
+189,7,"Cabillaud poché"
+190,10,"Crevettes sautées"
+191,17,"Saumon rôti"
+192,6,"Pâtes au saumon"
+193,"","Dahl de lentilles"
+194,"","Poulet au curry"
+195,"","Bœuf aux carottes"
+196,"","Cabillaud poché"
+197,8,"Omelette herbes"
+198,15,"Crevettes sautées"
+199,"","Dahl de lentilles"

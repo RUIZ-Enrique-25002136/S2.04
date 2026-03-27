@@ -1,28 +1,25 @@
 import random
 import os
 import oracledb
-from datetime import datetime, timedelta
 from faker import Faker
 from faker_food import FoodProvider
 import csv
 
 # ─── 1. CONFIGURATION ORACLE ─────────────────────────────────────────────────
 DB_USER = "SYSTEM"
-DB_PASSWORD = "653412"
-NB_MEMBRE = 10000
+DB_PASSWORD = "653412" 
+NB_MEMBRE = 10000 
 NB_REPAS = 200
+NB_ADRESSE = 1000
+NB_ORGANISME = 200
+NB_MACHINE = 21
+NB_ENTRETIEN = 20000
 
 # ─── 2. PARAMÈTRES ET CATALOGUES MÉTIERS ─────────────────────────────────────
 fake = Faker("fr_FR")
 fake.add_provider(FoodProvider)
 
 # ─── 3. FONCTIONS UTILITAIRES ────────────────────────────────────────────────
-def rand_date(start_year=2000, end_year=2024):
-    start = datetime(start_year, 1, 1)
-    end = datetime(end_year, 12, 31)
-    return (start + timedelta(days=random.randint(0, (end - start).days))).strftime("%Y-%m-%d")
-def gambling(): 
-    return random.choice([True,False])
 
 def drop_tables():
     """Supprime les tables et recrée la structure depuis intention.sql"""
@@ -30,21 +27,20 @@ def drop_tables():
         with open("intention.sql", "r") as intention:
             intentionSQL = intention.read().split(";")
     except FileNotFoundError:
-        print("⚠️ Fichier intention.sql introuvable. Ignoré.")
+        print(" Fichier intention.sql introuvable. Ignoré.")
         return
 
     # CORRECTION : Utilisation des bonnes variables globales DB_USER, DB_PASSWORD, DB_DSN
     with oracledb.connect(user=DB_USER, password=DB_PASSWORD, host="127.0.0.1") as connection:
         with connection.cursor() as cursor:
-            # Liste des tables à drop pour alléger le code visuellement
-# Liste complète des tables à drop (de la plus dépendante à la plus indépendante)
+
             tables_to_drop = [
                 "EFFECTUE", "PARTICIPE", "HISTORIQUE_ENTRETIEN", "EST", 
                 "COMPORTE", "EST_COMPOSÉ", "EST_ORGANISÉ", "CONTIENT", 
                 "APPARTIENT", "ADHÈRE", "EST_AFFILIÉ", "CLUB", 
                 "ORDRE", "ENTRETIEN", "PLAT", "GROUPE", 
-                "ORGANISATION", "MEMBRE", "INGRÉDIENT", "SAUCE", 
-                "DATE_", "MODÈLE", "MACHINE", "LÉGUME", 
+                "ORGANISATION", "MEMBRE",
+                "MODÈLE", "MACHINE", "LÉGUME", 
                 "COMPOSANT", "RANG", "DIGNITÉ", "TITRE", 
                 "GRADE", "REPAS", "TERRITOIRE", "ORGANISME"
             ]
@@ -54,24 +50,21 @@ def drop_tables():
                 except oracledb.DatabaseError:
                     pass 
             for query in intentionSQL:
-                if query.strip(): # Évite d'exécuter des requêtes vides
+                if query.strip(): 
                     cursor.execute(query)
                     
         print("✓ Drop all tables & recreate succeed")
 
 def insert(data, connection, table, sql):
-    # --- 1. Insertion dans la base de données Oracle ---
     with connection.cursor() as cursor:
         cursor.executemany(sql, data)
         connection.commit() 
         print(f"  ✓ {table:<25} {len(data):>8,} lignes insérées")
 
-    # --- Création des dossiers s'ils n'existent pas ---
     os.makedirs("csv", exist_ok=True)
     os.makedirs("sql", exist_ok=True)
 
-    # --- 2. Exportation en CSV ---
-    # Le chemin pointe maintenant vers le dossier_csv/
+
     chemin_csv = os.path.join("csv", f"{table}.csv")
     with open(chemin_csv, mode="w", newline="", encoding="utf-8") as f_csv:
         writer = csv.writer(f_csv, quoting=csv.QUOTE_NONNUMERIC)
@@ -134,7 +127,7 @@ def main():
         ('Sucrerie', 'Chocolat noir', 'Traces de fruits à coque'),
         ('Sucrerie', 'Miel', None)
     ]
-    noms_plats_possibles = [
+    listes_plat = [
         "Poulet au curry",      # Blanc de Poulet + Curry
         "Saumon rôti",          # Pavé de Saumon
         "Pâtes au fromage",     # Pâtes + Fromage râpé
@@ -152,12 +145,10 @@ def main():
     composant = []
     for i, (type_alim, nom, allergene) in enumerate(liste_composants, start=1):
         composant.append((i, type_alim, nom, allergene))
-    adresses = [(i,fake.address().replace('\n',' ')) for i in range(1,100)]
-    organismes = [(fake.siret(),fake.company()) for i in range (1,500)]
-    
-    # --- 1. Génération préliminaire pour éviter les erreurs de dépendances ---
+    adresses = [(i,fake.address().replace('\n',' ')) for i in range(NB_ADRESSE)]
+    organismes = [(fake.siret(),fake.company()) for i in range (NB_ORGANISME)]
     repas_temporaire = [(i, fake.word()) for i in range(1, NB_REPAS)]
-    territoire = [(i,fake.region()) for i in range (1,101)]
+    territoire = [(i,fake.region()) for i in range (51)]
     organisations = []
     ordres = []
     clubs = []
@@ -172,13 +163,13 @@ def main():
         id_ordre_parent = random.choice(ordres)[0]
         clubs.append((i, id_ordre_parent))
 
-    repas_pour_groupes = random.sample(repas_temporaire, 50)
     legume = [(i,fake.boolean(),fake.vegetable())for i in range(1,20)]
 
 
 
-
+    repas_pour_groupes = random.sample(repas_temporaire, 50)
     groupe = [(i, repas_pour_groupes[i-1][0]) for i in range(1, 11)]
+
     # --- 2. Génération des Membres ---
     membre = []
     for i in range (1, NB_MEMBRE):
@@ -195,28 +186,36 @@ def main():
     for i in range(1, NB_REPAS): 
         repas.append((i, fake.word(), fake.date_time_between(start_date='-2y', end_date='now'), random.choice(adresses)[1], random.choice(ids_chevaliers)))
         
-        plat = []
-        for i in range(1, len(repas) + 1): # On commence à 1 pour correspondre aux vrais IDs
-            # On choisit un nom de plat dans la liste que tu as créée plus haut
-            nom_plat_choisi = random.choice(noms_plats_possibles)
-            
-            # L'ordre exact du SQL : (Id_Plat, Nom_Du_Plat, Id_Legume)
-            if random.random() > 0.5:
-                plat.append((i, nom_plat_choisi, random.choice(legume)[0]))
-            else :
-                plat.append((i, nom_plat_choisi, None))
+    plat = []
+    for i in range(1, len(repas) + 1): 
+        nom_plat = random.choice(listes_plat)
+        
+        if random.random() > 0.5:
+            plat.append((i,random.choice(legume)[0],nom_plat))
+        else :
+            plat.append((i,None,nom_plat))
 
-    membres_aleatoires = random.sample(membre, 1000)
-    entretien = [(i, fake.date_this_year(), membres_aleatoires[i-1][0]) for i in range(1, 1001)]    
+# --- 1. Génération des Entretiens (Garanti SANS doublons) ---
+    nb_entretiens = min(NB_ENTRETIEN, len(membre))    
+    membres_uniques_pour_entretien = random.sample(membre, nb_entretiens)
     
-    machine = [(i,fake.word()) for i in range (1,200)]
-    modele = [(i,random.choice(liste_machines)[1]) for i in range(1,101)]
+    entretien = []
+    for i in range(1, nb_entretiens + 1):
+        id_membre = membres_uniques_pour_entretien[i-1][0]
+        entretien.append((i, fake.date_this_year(), id_membre))
+
+    machine = [(i, fake.word()) for i in range(1, NB_MACHINE + 1)]
+    modele = [(i, random.choice(liste_machines)[1]) for i in range(1, NB_MACHINE + 101)]
+    modele = [(i,random.choice(liste_machines)[1]) for i in range(NB_MACHINE + 100)]
     
 
    
    
     drop_tables()
 
+    historique_entretien_unique = [(random.choice(ordres)[0],random.choice(machine)[0],random.choice(entretien)[0],fake.date_this_decade())for _ in range(1,1500)]
+    historique_entretien = list(historique_entretien_unique)[:1000]
+    
 
     effectue_uniques = {(random.choice(machine)[0], random.choice(entretien)[0]) for _ in range(2000)}
     effectue = list(effectue_uniques)[:1000]   
@@ -224,22 +223,22 @@ def main():
     participe_uniques = {(random.choice(repas)[0], random.choice(machine)[0]) for _ in range(2000)}    
     participe = list(participe_uniques)[:1000]   
 
-    adhère_unique = {(random.choice(membre)[0],random.choice(organisations)[0])for i in range(1,1000)}
+    adhère_unique = {(random.choice(membre)[0],random.choice(organisations)[0])for i in range(1000)}
     adhère = list(adhère_unique)[:1000]
 
-    est_unique = {(random.choice(machine)[0],random.choice(modele)[0])for i in range(1,1000)}
+    est_unique = {(random.choice(machine)[0],random.choice(modele)[0])for i in range(1000)}
     est = list(est_unique)[:1000]
 
-    est_affilie_unique = {(random.choice(membre)[0],random.choice(organismes)[0])for i in range(1,1000)}
+    est_affilie_unique = {(random.choice(membre)[0],random.choice(organismes)[0])for i in range(1000)}
     est_affilie = list(est_affilie_unique)[:1000]
     
     appartient_unique = {(random.choice(membre)[0],random.choice(groupe)[0])for i in range(1,1000)}
     appartient = list(appartient_unique)[:1000]
     
-    contient_unique = {(random.choice(repas)[0],random.choice(plat)[0])for i in range (1,1000)}
+    contient_unique = {(random.choice(repas)[0],random.choice(plat)[0])for i in range (1000)}
     contient = list(contient_unique)[:1000]
     
-    est_organise_unique = {(random.choice(membre)[0],random.choice(repas)[0])for i in range(1,1000)}
+    est_organise_unique = {(random.choice(membre)[0],random.choice(repas)[0])for i in range(1000)}
     est_organise = list(est_organise_unique)[:1000]
     
     est_compose_unique = {(random.choice(plat)[0],random.choice(composant)[0])for i in range(1,21)}
@@ -267,8 +266,11 @@ def main():
         insert(organisations, connection, "Organisation", "insert into organisation values (:1, :2, :3, :4)")    
         insert(ordres, connection, "Ordre", "insert into Ordre values (:1)")    
         insert(clubs, connection, "Club", "insert into Club values (:1, :2)")
+        
         insert(modele, connection, "Modèle", "insert into modèle values (:1, :2)")
         insert(entretien, connection, "Entretien", "insert into Entretien values (:1, :2, :3)")
+        insert(historique_entretien, connection, "Historique entretien", "insert into Historique_entretien values (:1, :2, :3, :4)")
+
         insert(effectue, connection, "Effectue",  "insert into Effectue values (:1, :2)")
         insert(est, connection, "Est", "insert into est values (:1, :2)")
         insert(adhère,connection,"Adhère","insert into adhère values (:1, :2)")
