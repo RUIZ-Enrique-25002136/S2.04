@@ -1,60 +1,60 @@
-1,"Juniper Berries","Ordre",4
-2,"Apples","Ordre",11
-3,"Nashi Pear","Ordre",4
-4,"Rockmelon","Ordre",22
-5,"Melon","Ordre",30
-6,"Mangosteens","Ordre",32
-7,"Watermelon","Ordre",2
-8,"Oranges","Ordre",33
-9,"Dragonfruit","Ordre",35
-10,"Currants","Ordre",15
-11,"Blueberries","Club",23
-12,"Mulberries","Club",25
-13,"Custard Apples","Club",35
-14,"Nashi Pear","Club",12
-15,"Mangosteens","Club",13
-16,"Sprouts","Club",34
-17,"Cranberry","Club",39
-18,"Cranberry","Club",32
-19,"Currants","Club",38
-20,"Cavalo","Club",40
-21,"Dragonfruit","Club",22
-22,"Bush Tomato","Club",24
-23,"Tomatoes","Club",12
-24,"Grapes","Club",49
-25,"Elderberry","Club",47
-26,"Aubergine","Club",2
-27,"Kiwiberries","Club",33
-28,"Lemon","Club",48
-29,"Sprouts","Club",6
-30,"Custard Apples Daikon","Club",49
-31,"Elderberry","Club",1
-32,"Limes","Club",29
-33,"Cumquat","Club",4
-34,"Watermelon","Club",7
-35,"Blood oranges","Club",42
-36,"Elderberry","Club",3
-37,"Longan","Club",43
-38,"Olives","Club",32
-39,"Loquats","Club",9
-40,"Strawberries","Club",21
-41,"Prunes","Club",46
-42,"Apples","Club",1
-43,"Guava","Club",35
-44,"Guava","Club",7
-45,"Honeydew melon","Club",46
-46,"Melon","Club",23
-47,"Aubergine","Club",27
-48,"Sprouts","Club",2
-49,"Banana","Club",43
-50,"Grapes","Club",41
-51,"Butternut pumpkin","Club",22
-52,"Mango","Club",35
-53,"Loquats","Club",8
-54,"Nectarines","Club",50
-55,"Cavalo","Club",15
-56,"Starfruit","Club",39
-57,"Pears","Club",48
-58,"Aubergine","Club",37
-59,"Watermelon","Club",30
-60,"Custard Apples","Club",42
+1,"Cumquat","Ordre",7
+2,"Blood oranges","Ordre",8
+3,"Blackberries","Ordre",0
+4,"Lemon","Ordre",35
+5,"Mulberries","Ordre",7
+6,"Mulberries","Ordre",20
+7,"Mangosteens","Ordre",10
+8,"Mulberries","Ordre",46
+9,"Cranberry","Ordre",4
+10,"Blackberries","Ordre",41
+11,"Elderberry","Club",4
+12,"Incaberries","Club",44
+13,"Watermelon","Club",39
+14,"Oranges","Club",27
+15,"Kiwi Fruit","Club",11
+16,"Watermelon","Club",34
+17,"Plums","Club",36
+18,"Corella Pear","Club",15
+19,"Cranberry","Club",35
+20,"Cranberry","Club",1
+21,"Dates","Club",37
+22,"Peaches","Club",33
+23,"Dried Apricots","Club",43
+24,"Juniper Berries","Club",47
+25,"Custard Apples","Club",42
+26,"Tomatoes","Club",30
+27,"Papaw","Club",45
+28,"Mangosteens","Club",17
+29,"Mango","Club",32
+30,"Nectarines","Club",10
+31,"Starfruit","Club",16
+32,"Cherries","Club",22
+33,"Prunes","Club",41
+34,"Olives","Club",14
+35,"Figs","Club",50
+36,"Custard Apples Daikon","Club",42
+37,"Goji Berry","Club",0
+38,"Passionfruit","Club",45
+39,"Dates","Club",14
+40,"Nectarines","Club",48
+41,"Nashi Pear","Club",23
+42,"Fingerlime","Club",16
+43,"Corella Pear","Club",6
+44,"Olives","Club",48
+45,"Feijoa","Club",32
+46,"Mangosteens","Club",15
+47,"Cumquat","Club",38
+48,"Feijoa","Club",43
+49,"Pomegranate","Club",8
+50,"Pomegranate","Club",48
+51,"Lychees","Club",34
+52,"Mangosteens","Club",49
+53,"Oranges","Club",49
+54,"Pomegranate","Club",1
+55,"Dragonfruit","Club",45
+56,"Juniper Berries","Club",8
+57,"Peaches","Club",32
+58,"Olives","Club",1
+59,"Blood oranges","Club",9
+60,"Feijoa","Club",41

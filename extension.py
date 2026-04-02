@@ -107,6 +107,7 @@ def main():
     for i, (type_alim, nom, allergene) in enumerate(liste_composants, start=1):
         composant.append((i, type_alim, nom, allergene))
     adresses = [(i,fake.address().replace('\n',' ')) for i in range(NB_ADRESSE)]
+
     organismes = [(fake.siret(),fake.company()) for _ in range (NB_ORGANISME)]
     repas_temporaire = [(i, fake.word()) for i in range(1, NB_REPAS)]
     territoire = [(i,fake.region()) for i in range (51)]
@@ -177,7 +178,7 @@ def main():
     
 
     effectue_uniques = {(random.choice(machine)[0], random.choice(entretien)[0]) for _ in range(2000)}
-    effectue = list(effectue_uniques)[:1000]   
+    effectue = list(effectue_uniques)[:1000]  
 
     participe_uniques = {(random.choice(repas)[0], random.choice(machine)[0]) for _ in range(2000)}    
     participe = list(participe_uniques)[:1000]   
